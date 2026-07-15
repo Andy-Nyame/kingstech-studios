@@ -17,7 +17,8 @@ const navigationLinks = [
 
 export default function Header() {
   const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openMenuPathname, setOpenMenuPathname] = useState(null);
+  const isMenuOpen = openMenuPathname === pathname;
   const menuButtonRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
@@ -28,16 +29,18 @@ export default function Header() {
 
     const previousOverflow = document.body.style.overflow;
     const desktopQuery = window.matchMedia("(min-width: 56.25rem)");
-    const focusableElements = mobileMenuRef.current?.querySelectorAll("a[href]");
+    const focusableElements = mobileMenuRef.current?.querySelectorAll(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
     const firstFocusable = focusableElements?.[0];
     const lastFocusable = focusableElements?.[focusableElements.length - 1];
+    const focusFrame = window.requestAnimationFrame(() => firstFocusable?.focus());
 
     document.body.style.overflow = "hidden";
-    firstFocusable?.focus();
 
     function handleKeyDown(event) {
       if (event.key === "Escape") {
-        setIsMenuOpen(false);
+        setOpenMenuPathname(null);
         menuButtonRef.current?.focus();
         return;
       }
@@ -57,22 +60,34 @@ export default function Header() {
 
     function handleDesktopChange(event) {
       if (event.matches) {
-        setIsMenuOpen(false);
+        setOpenMenuPathname(null);
+      }
+    }
+
+    function handleOutsidePointer(event) {
+      const clickedMenu = mobileMenuRef.current?.contains(event.target);
+      const clickedButton = menuButtonRef.current?.contains(event.target);
+
+      if (!clickedMenu && !clickedButton) {
+        setOpenMenuPathname(null);
       }
     }
 
     document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handleOutsidePointer);
     desktopQuery.addEventListener("change", handleDesktopChange);
 
     return () => {
+      window.cancelAnimationFrame(focusFrame);
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handleOutsidePointer);
       desktopQuery.removeEventListener("change", handleDesktopChange);
     };
   }, [isMenuOpen]);
 
   function closeMenu() {
-    setIsMenuOpen(false);
+    setOpenMenuPathname(null);
   }
 
   function renderNavigationLink({ label, href }, mobile = false) {
@@ -96,14 +111,18 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <Link href="/" className={styles.brand} aria-label="KINGSTECH STUDIOS home">
+        <Link
+          href="/"
+          className={styles.logoLink}
+          aria-label="KINGSTECH STUDIOS home"
+        >
           <Image
-            src="/logos/kingstech-crown.png"
+            src="/logos/favicon2.png"
             alt=""
-            width={1023}
-            height={1021}
-            sizes="(max-width: 26rem) 80px, (max-width: 56.249rem) 84px, 100px"
-            className={styles.brandImage}
+            width={1267}
+            height={202}
+            sizes="(max-width: 48rem) 276px, (max-width: 64rem) 326px, 376px"
+            className={styles.logo}
             priority
           />
         </Link>
@@ -123,7 +142,10 @@ export default function Header() {
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setIsMenuOpen((current) => !current)}
+          data-open={isMenuOpen}
+          onClick={() =>
+            setOpenMenuPathname((current) => (current === pathname ? null : pathname))
+          }
         >
           <span className={styles.menuIcon} data-open={isMenuOpen} aria-hidden="true">
             <span />
@@ -134,7 +156,7 @@ export default function Header() {
       </div>
 
       {isMenuOpen ? (
-        <div className={styles.mobilePanel}>
+        <div className={styles.mobilePanel} data-open={isMenuOpen}>
           <nav
             id="mobile-navigation"
             ref={mobileMenuRef}

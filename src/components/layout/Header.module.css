@@ -18,20 +18,23 @@
   justify-content: space-between;
   gap: clamp(0.75rem, 2vw, 1.5rem);
   padding-block: 0.4375rem;
+  padding-left: clamp(0.25rem, 0.8vw, 0.625rem);
 }
 
-.brand {
-  --header-logo-size: clamp(5.25rem, 7vw, 6.25rem);
-
+.logoLink {
   display: inline-flex;
-  flex-shrink: 0;
+  min-width: 0;
+  max-width: 32vw;
+  flex: 0 1 auto;
   align-items: center;
 }
 
-.brandImage {
-  width: var(--header-logo-size);
-  height: auto;
-  margin-block: calc(var(--header-logo-size) * -0.14);
+.logo {
+  width: auto;
+  max-width: 100%;
+  height: 60px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .desktopNav {
@@ -84,8 +87,10 @@
 
 .menuButton {
   display: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  position: relative;
+  z-index: 1002;
+  width: 2.75rem;
+  height: 2.75rem;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
@@ -125,11 +130,13 @@
 
 .mobilePanel {
   position: fixed;
+  z-index: 1001;
   inset: var(--refined-header-height) 0 0;
   padding: 1.25rem var(--container-gutter) 2rem;
   overflow-y: auto;
   background: rgba(250, 251, 252, 0.98);
   animation: panel-in var(--transition-base) both;
+  pointer-events: auto;
 }
 
 .mobileNav {
@@ -168,6 +175,10 @@
 }
 
 @media (max-width: 56.249rem) {
+  .logoLink {
+    max-width: 38vw;
+  }
+
   .desktopNav {
     display: none;
   }
@@ -191,10 +202,30 @@
     padding-inline: 0.75rem;
     font-size: 0.75rem;
   }
+
+  .logoLink {
+    max-width: 35vw;
+  }
 }
 
 @media (max-width: 26rem) {
-  .brand {
-    --header-logo-size: 5rem;
+  .inner {
+    gap: 0.5rem;
+  }
+
+  .logoLink {
+    max-width: 32vw;
+  }
+}
+
+@media (max-width: 64rem) {
+  .logo {
+    height: 52px;
+  }
+}
+
+@media (max-width: 48rem) {
+  .logo {
+    height: 44px;
   }
 }

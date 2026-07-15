@@ -19,15 +19,19 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.brandColumn}>
-          <Link href="/" className={styles.brand} aria-label="KINGSTECH STUDIOS home">
+        <div className={styles.logoColumn}>
+          <Link
+            href="/"
+            className={styles.logoLink}
+            aria-label="KINGSTECH STUDIOS home"
+          >
             <Image
-              src="/logos/kingstech-crown.png"
+              src="/logos/favicon1.png"
               alt=""
-              width={1023}
-              height={1021}
-              sizes="(max-width: 45rem) 144px, 176px"
-              className={styles.brandImage}
+              width={1267}
+              height={202}
+              sizes="(max-width: 48rem) 351px, (max-width: 64rem) 426px, 502px"
+              className={styles.logo}
             />
           </Link>
           <p className={styles.tagline}>Building the Future, Digitally.</p>
