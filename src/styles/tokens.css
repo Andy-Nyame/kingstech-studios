@@ -1,1 +1,56 @@
+:root {
+  --color-primary: #0b4fe8;
+  --color-primary-dark: #0737a6;
+  --color-gold: #c7a33a;
+  --color-gold-pale: #f7edc8;
+  --color-near-black: #15171a;
+  --color-dark-surface: #24282b;
+  --color-white: #ffffff;
+  --color-off-white: #fafbfc;
+  --color-surface-light: #f2f4f7;
+  --color-muted: #667085;
+  --color-border: #dfe3e8;
+  --color-success: #16805c;
+  --color-error: #c43d4b;
 
+  --font-heading: var(--font-space-grotesk), Arial, sans-serif;
+  --font-body: var(--font-inter), Arial, sans-serif;
+
+  --container-width: 75rem;
+  --container-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-spacing: clamp(4.5rem, 9vw, 8rem);
+  --header-height: 4.75rem;
+
+  --radius-small: 0.5rem;
+  --radius-medium: 0.875rem;
+  --radius-large: 1.5rem;
+  --radius-pill: 999px;
+
+  --shadow-small: 0 0.25rem 1rem rgba(21, 23, 26, 0.06);
+  --shadow-medium: 0 1rem 2.5rem rgba(21, 23, 26, 0.1);
+  --shadow-large: 0 1.5rem 4rem rgba(21, 23, 26, 0.14);
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3.5rem;
+
+  --heading-display: clamp(2.75rem, 7vw, 5.75rem);
+  --heading-section: clamp(2rem, 4.5vw, 3.75rem);
+  --heading-card: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+@media (max-width: 56.249rem) {
+  :root {
+    --header-height: 4.25rem;
+  }
+}
