@@ -1,6 +1,7 @@
 import { Inter, Space_Grotesk } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import { siteConfig } from "@/constants/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "KINGSTECH STUDIOS",
+  title: siteConfig.name,
   description:
     "Premium web design, UI/UX, and web development for modern businesses.",
 };

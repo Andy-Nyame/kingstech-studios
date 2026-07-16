@@ -4,16 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { siteConfig } from "@/constants/site";
 import styles from "./Header.module.css";
-
-const navigationLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Process", href: "/process" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "About", href: "/about" },
-];
 
 export default function Header() {
   const pathname = usePathname();
@@ -114,7 +106,7 @@ export default function Header() {
         <Link
           href="/"
           className={styles.logoLink}
-          aria-label="KINGSTECH STUDIOS home"
+          aria-label={`${siteConfig.name} home`}
         >
           <Image
             src="/logos/favicon2.png"
@@ -128,7 +120,7 @@ export default function Header() {
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Primary navigation">
-          {navigationLinks.map((link) => renderNavigationLink(link))}
+          {siteConfig.navigation.map((link) => renderNavigationLink(link))}
         </nav>
 
         <Link href="/contact" className={`button button-primary ${styles.desktopCta}`}>
@@ -163,7 +155,7 @@ export default function Header() {
             className={styles.mobileNav}
             aria-label="Mobile navigation"
           >
-            {navigationLinks.map((link) => renderNavigationLink(link, true))}
+            {siteConfig.navigation.map((link) => renderNavigationLink(link, true))}
             <Link
               href="/contact"
               className={`button button-primary ${styles.mobileCta}`}
