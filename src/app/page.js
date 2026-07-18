@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import MediaPlaceholder from "@/components/ui/MediaPlaceholder";
 import styles from "./home.module.css";
 
 const capabilities = [
@@ -104,10 +104,14 @@ export default function Home() {
           </div>
 
           <div className={`${styles.heroMedia} animate-fade-in`}>
-            <MediaPlaceholder
-              label="Hero Digital Experience Illustration"
-              aspectRatio="6 / 5"
-              className={styles.heroPlaceholder}
+            <Image
+              src="/images/backgrounds/hero-illustration.webp"
+              alt="Modern digital interface and web development workspace"
+              width={1672}
+              height={941}
+              sizes="(max-width: 52rem) calc(100vw - 40px), (max-width: 75rem) 45vw, 540px"
+              className={styles.heroImage}
+              priority
             />
             <span className={styles.mediaBadge} aria-hidden="true">
               <span>Refined UI/UX</span>
@@ -134,9 +138,13 @@ export default function Home() {
       <section className={styles.studio} aria-labelledby="studio-title">
         <div className={`container ${styles.studioGrid}`}>
           <div className={styles.studioMedia}>
-            <MediaPlaceholder
-              label="Studio Interface Preview"
-              aspectRatio="4 / 3"
+            <Image
+              src="/images/ui/studio-interface-preview.webp"
+              alt="KINGSTECH STUDIOS UI and web design workspace"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 52rem) calc(100vw - 40px), (max-width: 75rem) 48vw, 600px"
+              className={styles.studioImage}
             />
             <span className={styles.studioNote} aria-hidden="true">
               <small>Our approach</small>
@@ -187,9 +195,22 @@ export default function Home() {
                   index === 0 || index === 3 ? styles.serviceWide : ""
                 }`}
               >
-                <div className={styles.serviceIcon} aria-hidden="true">
-                  <span />
-                </div>
+                {service.category === "Commerce" ? (
+                  <div className={styles.serviceImageFrame}>
+                    <Image
+                      src="/images/services/ecommerce-solutions.webp"
+                      alt="Responsive e-commerce website and online shopping interface"
+                      width={1536}
+                      height={1024}
+                      sizes="(max-width: 40rem) calc(100vw - 80px), (max-width: 52rem) 44vw, 300px"
+                      className={styles.serviceImage}
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.serviceIcon} aria-hidden="true">
+                    <span />
+                  </div>
+                )}
                 <div>
                   <p className={styles.serviceCategory}>{service.category}</p>
                   <h3>{service.title}</h3>
@@ -210,11 +231,28 @@ export default function Home() {
 
       <section className={styles.project} aria-labelledby="project-title">
         <div className={`container ${styles.projectGrid}`}>
-          <MediaPlaceholder
-            label="Kobby’s Kitchen Website Mockup"
-            aspectRatio="16 / 11"
-            className={styles.projectMedia}
-          />
+          <div className={styles.projectMedia}>
+            <div className={styles.projectDesktopFrame}>
+              <Image
+                src="/images/portfolio/kobbys-kitchen-desktop.webp"
+                alt="Kobby’s Kitchen website displayed on a laptop"
+                width={1536}
+                height={1024}
+                sizes="(max-width: 52rem) calc(100vw - 40px), (max-width: 75rem) 52vw, 650px"
+                className={styles.projectDesktopImage}
+              />
+            </div>
+            <div className={styles.projectMobileFrame}>
+              <Image
+                src="/images/portfolio/kobbys-kitchen-mobile.webp"
+                alt="Kobby’s Kitchen responsive website displayed on a smartphone"
+                width={1024}
+                height={1536}
+                sizes="(max-width: 40rem) 68vw, (max-width: 52rem) 240px, 210px"
+                className={styles.projectMobileImage}
+              />
+            </div>
+          </div>
 
           <div className={styles.projectCopy}>
             <p className="eyebrow">Featured Project</p>
