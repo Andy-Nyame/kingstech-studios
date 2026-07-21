@@ -130,13 +130,14 @@
 }
 
 .mobilePanel {
-  position: fixed;
+  position: absolute;
   z-index: 1003;
-  top: var(--refined-header-height);
+  top: 100%;
   right: 0;
-  bottom: 0;
   left: 0;
-  padding: 1.25rem var(--container-gutter) 2rem;
+  height: auto;
+  max-height: calc(100dvh - var(--refined-header-height));
+  padding: 1rem var(--container-gutter) 1.5rem;
   border-top: 1px solid var(--color-border);
   overflow-y: auto;
   background: rgba(250, 251, 252, 0.98);
@@ -153,7 +154,7 @@
 }
 
 .mobileNavLink {
-  padding: 1rem 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--color-border);
   color: var(--color-near-black);
   font-size: var(--text-lg);
@@ -165,7 +166,7 @@
 
 .mobileCta {
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 @keyframes panel-in {
