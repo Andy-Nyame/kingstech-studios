@@ -7,12 +7,27 @@ import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/constants/site";
 import styles from "./Header.module.css";
 
+const mobileNavigationLinks = siteConfig.navigation.some(({ href }) => href === "/contact")
+  ? siteConfig.navigation
+  : [...siteConfig.navigation, { label: "Contact", href: "/contact" }];
+
 export default function Header() {
   const pathname = usePathname();
-  const [openMenuPathname, setOpenMenuPathname] = useState(null);
-  const isMenuOpen = openMenuPathname === pathname;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const previousPathnameRef = useRef(pathname);
+
+  useEffect(() => {
+    if (previousPathnameRef.current === pathname) {
+      return undefined;
+    }
+
+    previousPathnameRef.current = pathname;
+    const closeFrame = window.requestAnimationFrame(() => setIsMenuOpen(false));
+
+    return () => window.cancelAnimationFrame(closeFrame);
+  }, [pathname]);
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -32,7 +47,7 @@ export default function Header() {
 
     function handleKeyDown(event) {
       if (event.key === "Escape") {
-        setOpenMenuPathname(null);
+        setIsMenuOpen(false);
         menuButtonRef.current?.focus();
         return;
       }
@@ -52,7 +67,7 @@ export default function Header() {
 
     function handleDesktopChange(event) {
       if (event.matches) {
-        setOpenMenuPathname(null);
+        setIsMenuOpen(false);
       }
     }
 
@@ -61,7 +76,7 @@ export default function Header() {
       const clickedButton = menuButtonRef.current?.contains(event.target);
 
       if (!clickedMenu && !clickedButton) {
-        setOpenMenuPathname(null);
+        setIsMenuOpen(false);
       }
     }
 
@@ -79,7 +94,7 @@ export default function Header() {
   }, [isMenuOpen]);
 
   function closeMenu() {
-    setOpenMenuPathname(null);
+    setIsMenuOpen(false);
   }
 
   function renderNavigationLink({ label, href }, mobile = false) {
@@ -135,9 +150,7 @@ export default function Header() {
           aria-controls="mobile-navigation"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           data-open={isMenuOpen}
-          onClick={() =>
-            setOpenMenuPathname((current) => (current === pathname ? null : pathname))
-          }
+          onClick={() => setIsMenuOpen((current) => !current)}
         >
           <span className={styles.menuIcon} data-open={isMenuOpen} aria-hidden="true">
             <span />
@@ -155,7 +168,7 @@ export default function Header() {
             className={styles.mobileNav}
             aria-label="Mobile navigation"
           >
-            {siteConfig.navigation.map((link) => renderNavigationLink(link, true))}
+            {mobileNavigationLinks.map((link) => renderNavigationLink(link, true))}
             <Link
               href="/contact"
               className={`button button-primary ${styles.mobileCta}`}
