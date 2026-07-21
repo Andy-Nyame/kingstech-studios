@@ -204,11 +204,11 @@
 }
 
 .highlightCard {
-  display: grid;
-  min-height: 11rem;
-  align-content: space-between;
-  gap: 2rem;
-  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  min-height: 0;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.125rem);
+  padding: clamp(1.25rem, 2.4vw, 1.5rem);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-large);
   background: var(--color-white);
@@ -229,6 +229,7 @@
   display: grid;
   width: 2.75rem;
   height: 2.75rem;
+  flex: 0 0 auto;
   place-items: center;
   border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
   border-radius: var(--radius-medium);
@@ -243,10 +244,11 @@
 }
 
 .highlightCard h3 {
+  min-width: 0;
   color: var(--color-near-black);
   font-size: var(--heading-card);
   letter-spacing: -0.035em;
-  line-height: 1.15;
+  line-height: 1.18;
 }
 
 .cta {
