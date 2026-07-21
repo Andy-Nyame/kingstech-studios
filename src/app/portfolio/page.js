@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import MediaPlaceholder from "@/components/ui/MediaPlaceholder";
 import styles from "./portfolio.module.css";
 
 export const metadata = {
@@ -20,34 +19,82 @@ const projectDetails = [
 ];
 
 const highlights = [
-  "Responsive website layout",
-  "Clear food business presentation",
-  "WhatsApp/contact focused flow",
-  "Simple navigation",
-  "Mobile-first customer experience",
-  "Modern visual direction",
+  { title: "Responsive website layout", icon: "devices" },
+  { title: "Clear food business presentation", icon: "menu" },
+  { title: "WhatsApp/contact focused flow", icon: "chat" },
+  { title: "Simple navigation", icon: "navigation" },
+  { title: "Mobile-first customer experience", icon: "phone" },
+  { title: "Modern visual direction", icon: "sparkle" },
 ];
 
-const upcomingProjects = [
-  {
-    title: "Car Rental Website",
-    status: "Concept",
-    description:
-      "A professional booking-focused website concept for a car rental business.",
-  },
-  {
-    title: "Business Website",
-    status: "Coming Soon",
-    description:
-      "Clean websites for local businesses that need a stronger online presence.",
-  },
-  {
-    title: "Custom Dashboard",
-    status: "In Planning",
-    description:
-      "Web app interfaces for managing bookings, orders, customers, or business data.",
-  },
-];
+function HighlightIcon({ name }) {
+  const icons = {
+    devices: (
+      <>
+        <rect x="3" y="5" width="13" height="10" rx="1.6" />
+        <path d="M8 19h3" />
+        <path d="M9.5 15v4" />
+        <rect x="17" y="9" width="4" height="9" rx="1.2" />
+      </>
+    ),
+    menu: (
+      <>
+        <rect x="5" y="4" width="14" height="16" rx="2" />
+        <path d="M8 8h8" />
+        <path d="M8 12h8" />
+        <path d="M8 16h5" />
+      </>
+    ),
+    chat: (
+      <>
+        <path d="M5 18.5 6.2 15A7.5 7.5 0 1 1 9 17.8L5 18.5Z" />
+        <path d="M9 10.5h6" />
+        <path d="M9 13.5h4" />
+      </>
+    ),
+    navigation: (
+      <>
+        <path d="M5 12h13" />
+        <path d="m14 8 4 4-4 4" />
+        <path d="M6 6h8" />
+        <path d="M6 18h8" />
+      </>
+    ),
+    phone: (
+      <>
+        <rect x="7" y="3" width="10" height="18" rx="2" />
+        <path d="M10.5 6h3" />
+        <path d="M11.5 18h1" />
+      </>
+    ),
+    sparkle: (
+      <>
+        <path d="M12 3.5 13.7 9l5.3 1.7-5.3 1.7L12 18l-1.7-5.6L5 10.7 10.3 9 12 3.5Z" />
+        <path d="M18.5 4.5v3" />
+        <path d="M20 6h-3" />
+        <path d="M5.5 16.5v2.5" />
+        <path d="M6.75 17.75h-2.5" />
+      </>
+    ),
+  };
+
+  return (
+    <span className={styles.highlightIcon} aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        focusable="false"
+      >
+        {icons[name]}
+      </svg>
+    </span>
+  );
+}
 
 export default function PortfolioPage() {
   return (
@@ -148,41 +195,9 @@ export default function PortfolioPage() {
 
           <div className={styles.highlightGrid}>
             {highlights.map((highlight) => (
-              <article key={highlight} className={styles.highlightCard}>
-                <span aria-hidden="true" />
-                <h3>{highlight}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.upcoming} aria-labelledby="upcoming-projects-title">
-        <div className="container">
-          <div className={styles.upcomingHeader}>
-            <div>
-              <p className="eyebrow">Pipeline</p>
-              <h2 id="upcoming-projects-title">More projects coming soon</h2>
-            </div>
-            <p>
-              These are planned directions and concept areas for future KINGSTECH
-              STUDIOS work. They are not presented as completed client projects.
-            </p>
-          </div>
-
-          <div className={styles.upcomingGrid}>
-            {upcomingProjects.map((project) => (
-              <article key={project.title} className={styles.upcomingCard}>
-                <MediaPlaceholder
-                  label={project.status}
-                  className={styles.projectPlaceholder}
-                  aspectRatio="4 / 3"
-                />
-                <div className={styles.upcomingContent}>
-                  <p>{project.status}</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
+              <article key={highlight.title} className={styles.highlightCard}>
+                <HighlightIcon name={highlight.icon} />
+                <h3>{highlight.title}</h3>
               </article>
             ))}
           </div>
