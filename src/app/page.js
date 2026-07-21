@@ -24,24 +24,48 @@ const services = [
     title: "Website Design & UI/UX",
     description:
       "Clear, modern interfaces designed around usability, brand identity, and business goals.",
+    image: {
+      src: "/images/services/website-design-uiux.webp",
+      alt: "Modern website design and UI/UX interface preview",
+      width: 1448,
+      height: 1086,
+    },
   },
   {
     category: "Development",
     title: "Website Development",
     description:
       "Responsive and maintainable websites built with modern web technologies.",
+    image: {
+      src: "/images/services/website-development.webp",
+      alt: "Website development workspace with code and responsive layouts",
+      width: 1536,
+      height: 1024,
+    },
   },
   {
     category: "Commerce",
     title: "E-Commerce Experiences",
     description:
       "Structured online shopping experiences designed for clarity, trust, and conversion.",
+    image: {
+      src: "/images/services/ecommerce-solutions.webp",
+      alt: "Responsive e-commerce website and online shopping interface",
+      width: 1536,
+      height: 1024,
+    },
   },
   {
     category: "Applications",
     title: "Custom Web Applications",
     description:
       "Purpose-built digital tools and applications tailored to specific business needs.",
+    image: {
+      src: "/images/services/custom-web-applicatins.webp",
+      alt: "Custom web application dashboard and digital product interface",
+      width: 1536,
+      height: 1024,
+    },
   },
 ];
 
@@ -195,22 +219,16 @@ export default function Home() {
                   index === 0 || index === 3 ? styles.serviceWide : ""
                 }`}
               >
-                {service.category === "Commerce" ? (
-                  <div className={styles.serviceImageFrame}>
-                    <Image
-                      src="/images/services/ecommerce-solutions.webp"
-                      alt="Responsive e-commerce website and online shopping interface"
-                      width={1536}
-                      height={1024}
-                      sizes="(max-width: 40rem) calc(100vw - 80px), (max-width: 52rem) 44vw, 300px"
-                      className={styles.serviceImage}
-                    />
-                  </div>
-                ) : (
-                  <div className={styles.serviceIcon} aria-hidden="true">
-                    <span />
-                  </div>
-                )}
+                <div className={styles.serviceImageFrame}>
+                  <Image
+                    src={service.image.src}
+                    alt={service.image.alt}
+                    width={service.image.width}
+                    height={service.image.height}
+                    sizes="(max-width: 40rem) calc(100vw - 80px), (max-width: 52rem) 42vw, (max-width: 75rem) 22vw, 270px"
+                    className={styles.serviceImage}
+                  />
+                </div>
                 <div>
                   <p className={styles.serviceCategory}>{service.category}</p>
                   <h3>{service.title}</h3>
@@ -232,25 +250,27 @@ export default function Home() {
       <section className={styles.project} aria-labelledby="project-title">
         <div className={`container ${styles.projectGrid}`}>
           <div className={styles.projectMedia}>
-            <div className={styles.projectDesktopFrame}>
-              <Image
-                src="/images/portfolio/kobbys-kitchen-desktop.webp"
-                alt="Kobby’s Kitchen website displayed on a laptop"
-                width={1536}
-                height={1024}
-                sizes="(max-width: 52rem) calc(100vw - 40px), (max-width: 75rem) 52vw, 650px"
-                className={styles.projectDesktopImage}
-              />
-            </div>
-            <div className={styles.projectMobileFrame}>
-              <Image
-                src="/images/portfolio/kobbys-kitchen-mobile.webp"
-                alt="Kobby’s Kitchen responsive website displayed on a smartphone"
-                width={1024}
-                height={1536}
-                sizes="(max-width: 40rem) 68vw, (max-width: 52rem) 240px, 210px"
-                className={styles.projectMobileImage}
-              />
+            <div className={styles.projectDeviceShowcase}>
+              <div className={styles.projectDesktopFrame}>
+                <Image
+                  src="/images/portfolio/kobbys-kitchen-desktop.webp"
+                  alt="Kobby’s Kitchen website displayed on a laptop"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width: 40rem) 68vw, (max-width: 52rem) calc(100vw - 80px), (max-width: 75rem) 52vw, 650px"
+                  className={styles.projectDesktopImage}
+                />
+              </div>
+              <div className={styles.projectMobileFrame}>
+                <Image
+                  src="/images/portfolio/kobbys-kitchen-mobile.webp"
+                  alt="Kobby’s Kitchen responsive website displayed on a smartphone"
+                  width={1024}
+                  height={1536}
+                  sizes="(max-width: 40rem) 26vw, (max-width: 52rem) 240px, 210px"
+                  className={styles.projectMobileImage}
+                />
+              </div>
             </div>
           </div>
 

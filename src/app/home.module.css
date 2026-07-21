@@ -265,6 +265,7 @@
   grid-column: span 4;
   min-height: 18rem;
   align-content: space-between;
+  grid-template-rows: auto 1fr;
   gap: 2rem;
   padding: clamp(1.5rem, 3vw, 2.25rem);
   border: 1px solid var(--color-border);
@@ -285,33 +286,16 @@
 
 .serviceWide {
   grid-column: span 8;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(8rem, 0.38fr) minmax(0, 1fr);
+  grid-template-rows: auto;
   align-content: center;
   align-items: center;
 }
 
-.serviceIcon {
-  display: grid;
-  width: 3.5rem;
-  height: 3.5rem;
-  place-items: center;
-  border-radius: var(--radius-medium);
-  color: var(--color-primary);
-  background: color-mix(in srgb, var(--color-primary) 9%, transparent);
-}
-
-.serviceIcon span {
-  width: 1.4rem;
-  height: 1.4rem;
-  border: 2px solid currentColor;
-  border-radius: 0.25rem;
-  box-shadow: 0.3rem 0.3rem 0 color-mix(in srgb, var(--color-gold) 60%, transparent);
-}
-
 .serviceImageFrame {
   display: grid;
-  width: 100%;
-  height: 6.75rem;
+  width: min(100%, 16rem);
+  height: clamp(7.25rem, 13vw, 9.5rem);
   place-items: center;
   overflow: hidden;
   border: 1px solid var(--color-border);
@@ -358,6 +342,10 @@
 }
 
 .projectMedia {
+  min-width: 0;
+}
+
+.projectDeviceShowcase {
   position: relative;
   min-width: 0;
   padding: 0 3.5rem 4rem 0;
@@ -618,7 +606,7 @@
     grid-template-columns: 1fr;
   }
 
-  .projectMedia {
+  .projectDeviceShowcase {
     width: min(100%, 44rem);
     padding-right: 3rem;
   }
@@ -644,17 +632,28 @@
     bottom: -1rem;
   }
 
-  .projectMedia {
-    display: grid;
+  .serviceImageFrame {
+    height: clamp(6.75rem, 34vw, 8rem);
+  }
+
+  .projectDeviceShowcase {
+    display: flex;
     width: 100%;
-    gap: 1.25rem;
+    align-items: center;
+    gap: clamp(0.6rem, 3vw, 0.95rem);
     padding: 0;
+  }
+
+  .projectDesktopFrame {
+    flex: 1 1 68%;
+    min-width: 0;
   }
 
   .projectMobileFrame {
     position: static;
-    width: min(68%, 16rem);
-    justify-self: end;
+    width: auto;
+    max-width: 32%;
+    flex: 0 0 32%;
   }
 
   .capabilityList {
