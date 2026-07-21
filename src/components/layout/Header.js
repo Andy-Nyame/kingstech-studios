@@ -93,8 +93,8 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  function closeMenu() {
-    setIsMenuOpen(false);
+  function closeMenuAfterLinkClick() {
+    window.setTimeout(() => setIsMenuOpen(false), 0);
   }
 
   function renderNavigationLink({ label, href }, mobile = false) {
@@ -108,7 +108,7 @@ export default function Header() {
           isActive ? styles.active : ""
         }`}
         aria-current={isActive ? "page" : undefined}
-        onClick={mobile ? closeMenu : undefined}
+        onClick={mobile ? closeMenuAfterLinkClick : undefined}
       >
         {label}
       </Link>
@@ -172,7 +172,7 @@ export default function Header() {
             <Link
               href="/contact"
               className={`button button-primary ${styles.mobileCta}`}
-              onClick={closeMenu}
+              onClick={closeMenuAfterLinkClick}
             >
               Get Started
             </Link>
