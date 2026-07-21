@@ -61,7 +61,7 @@ const services = [
     description:
       "Purpose-built digital tools and applications tailored to specific business needs.",
     image: {
-      src: "/images/services/custom-web-applicatins.webp",
+      src: "/images/services/custom-web-applications.webp",
       alt: "Custom web application dashboard and digital product interface",
       width: 1536,
       height: 1024,
@@ -129,7 +129,7 @@ export default function Home() {
 
           <div className={`${styles.heroMedia} animate-fade-in`}>
             <Image
-              src="/images/backgrounds/hero-illustration.webp"
+              src="/images/illustrations/hero-illustration.webp"
               alt="Modern digital interface and web development workspace"
               width={1672}
               height={941}
