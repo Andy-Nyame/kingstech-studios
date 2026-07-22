@@ -149,14 +149,16 @@ export default function Home() {
         <h2 id="capabilities-title" className="visually-hidden">
           Core capabilities
         </h2>
-        <ul className={`container ${styles.capabilityList}`} role="list">
-          {capabilities.map((capability) => (
-            <li key={capability}>
-              <span className={styles.capabilityMark} aria-hidden="true" />
-              {capability}
-            </li>
-          ))}
-        </ul>
+        <div className={styles.capabilityInner}>
+          <ul className={styles.capabilityList} role="list">
+            {capabilities.map((capability) => (
+              <li key={capability}>
+                <span className={styles.capabilityMark} aria-hidden="true" />
+                {capability}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section className={styles.studio} aria-labelledby="studio-title">

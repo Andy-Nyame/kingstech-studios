@@ -115,9 +115,22 @@
   background: var(--color-surface-light);
 }
 
+.capabilityInner {
+  width: min(
+    var(--container-width),
+    calc(100% - (var(--container-gutter) * 2))
+  );
+  margin-inline: auto;
+}
+
 .capabilityList {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;
 }
 
 .capabilityList li {
@@ -126,7 +139,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  padding: 1rem 0.75rem;
+  padding: 1rem clamp(0.9rem, 1.6vw, 1.35rem);
   color: var(--color-muted);
   font-size: 0.75rem;
   font-weight: 600;
@@ -548,7 +561,9 @@
   }
 
   .capabilityList {
-    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .capabilityList li:nth-child(4) {
