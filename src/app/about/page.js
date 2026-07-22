@@ -103,22 +103,40 @@ export default function AboutPage() {
       </section>
 
       <section className={styles.founder} aria-labelledby="founder-title">
-        <div className={`container ${styles.founderGrid}`}>
-          <div className={styles.founderCard} aria-hidden="true">
-            <div className={styles.initials}>AN</div>
-            <div>
-              <span>Founder</span>
-              <strong>Andy Nyame</strong>
-            </div>
-          </div>
-          <div className={styles.founderCopy}>
+        <div className="container">
+          <div className={styles.founderHeader}>
             <p className="eyebrow">Leadership</p>
-            <h2 id="founder-title">Led by Andy Nyame</h2>
-            <p>
-              Andy Nyame is the founder of KINGSTECH STUDIOS. His focus is on
-              building clean, modern, and business-focused websites that help
-              brands appear more trusted and accessible online.
-            </p>
+            <h2 id="founder-title">Led with clear direction and client focus</h2>
+          </div>
+
+          <div className={styles.founderGrid}>
+            <article className={styles.founderCard}>
+              <div className={styles.initials} aria-hidden="true">
+                AKN
+              </div>
+              <div>
+                <span>Founder</span>
+                <strong>Andrew Kwaku Nyame</strong>
+                <p>
+                  Founder of KINGSTECH STUDIOS, focused on building clean,
+                  modern, and business-focused digital experiences.
+                </p>
+              </div>
+            </article>
+
+            <article className={styles.founderCard}>
+              <div className={styles.initials} aria-hidden="true">
+                PKA
+              </div>
+              <div>
+                <span>Co-Founder</span>
+                <strong>Patrick Kwasi Agbenyegah</strong>
+                <p>
+                  Co-Founder of KINGSTECH STUDIOS, supporting the studio&apos;s
+                  growth, direction, and client-focused digital solutions.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>

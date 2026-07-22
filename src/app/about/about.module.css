@@ -194,7 +194,6 @@
 }
 
 .storyCopy > p,
-.founderCopy > p,
 .missionPrimary > p,
 .visionCard > p,
 .valueCard > p,
@@ -204,7 +203,6 @@
 }
 
 .storyCopy > p,
-.founderCopy > p,
 .missionPrimary > p {
   font-size: var(--text-lg);
 }
@@ -242,18 +240,24 @@
   background: var(--surface-soft);
 }
 
+.founderHeader {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
 .founderGrid {
   display: grid;
-  grid-template-columns: minmax(17rem, 0.8fr) minmax(0, 1.2fr);
-  align-items: center;
-  gap: clamp(3rem, 8vw, 7rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
 }
 
 .founderCard {
   position: relative;
   isolation: isolate;
   display: grid;
-  min-height: clamp(18rem, 34vw, 28rem);
+  min-height: clamp(22rem, 30vw, 28rem);
   align-content: end;
   gap: 1.5rem;
   overflow: hidden;
@@ -317,12 +321,12 @@
   letter-spacing: -0.035em;
 }
 
-.founderCopy {
-  max-width: 42rem;
-}
-
-.founderCopy > p {
-  margin-top: 1.5rem;
+.founderCard p {
+  max-width: 28rem;
+  margin-top: 0.85rem;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.75;
 }
 
 .missionGrid {
@@ -599,16 +603,18 @@
 @media (max-width: 64rem) {
   .heroGrid,
   .storyGrid,
-  .founderGrid,
   .missionGrid,
   .approachGrid {
     grid-template-columns: 1fr;
   }
 
   .heroVisual,
-  .founderCard,
   .approachVisual {
     width: min(100%, 42rem);
+  }
+
+  .founderGrid {
+    grid-template-columns: 1fr;
   }
 
   .heroVisual,
@@ -631,7 +637,6 @@
   }
 
   .storyCopy > p,
-  .founderCopy > p,
   .missionPrimary > p {
     font-size: var(--text-base);
   }
