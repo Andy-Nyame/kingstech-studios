@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/constants/site";
 import styles from "./about.module.css";
@@ -65,7 +66,16 @@ export default function AboutPage() {
 
           <div className={styles.heroVisual} aria-hidden="true">
             <div className={styles.visualPanel}>
-              <span className={styles.visualMark}>KS</span>
+              <span className={styles.visualMark}>
+                <Image
+                  src="/favicon.ico"
+                  alt="KINGSTECH STUDIOS logo"
+                  width={264}
+                  height={218}
+                  sizes="(max-width: 40rem) 64px, 96px"
+                  className={styles.visualLogo}
+                />
+              </span>
               <span>{siteConfig.name}</span>
               <strong>{siteConfig.tagline}</strong>
             </div>
