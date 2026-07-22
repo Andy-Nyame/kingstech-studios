@@ -1,6 +1,6 @@
 .footer {
   color: rgba(255, 255, 255, 0.72);
-  background: var(--color-dark-surface);
+  background: var(--footer-bg);
 }
 
 .inner {

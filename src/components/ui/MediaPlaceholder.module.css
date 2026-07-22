@@ -9,7 +9,7 @@
   min-height: 16rem;
   place-items: center;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-medium);
 }
@@ -28,7 +28,7 @@
   right: -8%;
   width: 48%;
   aspect-ratio: 1;
-  background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  background: color-mix(in srgb, var(--royal-blue) 18%, transparent);
 }
 
 .placeholder::after {
@@ -36,23 +36,23 @@
   left: -8%;
   width: 44%;
   aspect-ratio: 1;
-  background: color-mix(in srgb, var(--color-gold) 20%, transparent);
+  background: color-mix(in srgb, var(--luxury-gold) 20%, transparent);
 }
 
 .light {
-  color: var(--color-near-black);
+  color: var(--text-primary);
   background:
     linear-gradient(
       135deg,
-      color-mix(in srgb, var(--color-white) 92%, var(--color-primary)),
-      var(--color-off-white)
+      color-mix(in srgb, var(--surface) 92%, var(--royal-blue)),
+      var(--surface-soft)
     );
 }
 
 .dark {
   color: var(--color-white);
   border-color: color-mix(in srgb, var(--color-white) 14%, transparent);
-  background: var(--color-dark-surface);
+  background: var(--dark-section-bg);
 }
 
 .window {
@@ -60,7 +60,7 @@
   overflow: hidden;
   border: 1px solid color-mix(in srgb, currentColor 14%, transparent);
   border-radius: var(--radius-medium);
-  background: color-mix(in srgb, var(--color-white) 86%, transparent);
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
   box-shadow: var(--shadow-small);
   transform: translateY(-0.5rem);
 }
@@ -84,11 +84,11 @@
 }
 
 .windowBar span:first-child {
-  background: var(--color-gold);
+  background: var(--luxury-gold);
 }
 
 .windowBar span:last-child {
-  background: var(--color-primary);
+  background: var(--royal-blue);
 }
 
 .windowBody {
@@ -127,11 +127,11 @@
 }
 
 .panels span:first-child {
-  background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  background: color-mix(in srgb, var(--royal-blue) 16%, transparent);
 }
 
 .panels span:last-child {
-  background: color-mix(in srgb, var(--color-gold) 17%, transparent);
+  background: color-mix(in srgb, var(--luxury-gold) 17%, transparent);
 }
 
 .label {
@@ -142,7 +142,7 @@
   padding: 0.65rem 0.8rem;
   border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
   border-radius: var(--radius-small);
-  background: color-mix(in srgb, var(--color-white) 88%, transparent);
+  background: color-mix(in srgb, var(--card) 88%, transparent);
   font-family: var(--font-heading);
   font-size: var(--text-xs);
   font-weight: 600;
@@ -152,7 +152,7 @@
 }
 
 .dark .label {
-  background: color-mix(in srgb, var(--color-dark-surface) 86%, transparent);
+  background: color-mix(in srgb, var(--dark-section-bg) 86%, transparent);
 }
 
 @media (max-width: 40rem) {

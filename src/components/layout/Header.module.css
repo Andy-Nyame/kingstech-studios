@@ -6,9 +6,9 @@
   z-index: 1000;
   top: 0;
   min-height: var(--refined-header-height);
-  border-bottom: 1px solid rgba(21, 23, 26, 0.07);
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 0.25rem 1.5rem rgba(21, 23, 26, 0.03);
+  border-bottom: 1px solid var(--header-border);
+  background: var(--header-bg);
+  box-shadow: var(--header-shadow);
   backdrop-filter: blur(1rem);
 }
 
@@ -47,7 +47,7 @@
 
 .navLink {
   position: relative;
-  color: var(--color-muted);
+  color: var(--text-muted);
   font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -61,7 +61,7 @@
   left: 0;
   height: 2px;
   border-radius: var(--radius-pill);
-  background: var(--color-primary);
+  background: var(--royal-blue);
   content: "";
   opacity: 0;
   transform: scaleX(0.4);
@@ -72,7 +72,7 @@
 
 .navLink:hover,
 .navLink.active {
-  color: var(--color-primary);
+  color: var(--royal-blue);
 }
 
 .navLink.active::after {
@@ -95,9 +95,9 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius-small);
-  background: var(--color-white);
+  background: var(--card);
 }
 
 .menuIcon {
@@ -111,7 +111,7 @@
   width: 100%;
   height: 2px;
   border-radius: var(--radius-pill);
-  background: var(--color-near-black);
+  background: var(--text-primary);
   transition:
     transform var(--transition-fast),
     opacity var(--transition-fast);
@@ -138,9 +138,9 @@
   height: auto;
   max-height: calc(100dvh - var(--refined-header-height));
   padding: 1rem var(--container-gutter) 1.5rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
   overflow-y: auto;
-  background: rgba(250, 251, 252, 0.98);
+  background: var(--mobile-menu-bg);
   box-shadow: 0 1.5rem 3rem rgba(21, 23, 26, 0.12);
   animation: panel-in var(--transition-base) both;
   pointer-events: auto;
@@ -156,9 +156,9 @@
 .mobileNavLink {
   margin-inline: -0.5rem;
   padding: 0.75rem 0.5rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border);
   border-radius: var(--radius-small);
-  color: var(--color-near-black);
+  color: var(--text-primary);
   font-size: var(--text-lg);
   transition:
     color var(--transition-fast),
@@ -168,11 +168,11 @@
 
 .mobileNavLink:focus-visible {
   outline: 0;
-  color: var(--color-primary);
-  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-white));
+  color: var(--royal-blue);
+  background: color-mix(in srgb, var(--royal-blue) 11%, var(--card));
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 22%, transparent),
-    inset 0.25rem 0 0 var(--color-gold);
+    inset 0 0 0 1px color-mix(in srgb, var(--royal-blue) 24%, transparent),
+    inset 0.25rem 0 0 var(--luxury-gold);
 }
 
 .mobileNavLink::after {
@@ -226,7 +226,12 @@
   }
 
   .logoLink {
-    max-width: 35vw;
+    max-width: 29vw;
+  }
+
+  .themeToggle {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 
@@ -236,7 +241,7 @@
   }
 
   .logoLink {
-    max-width: 32vw;
+    max-width: 26vw;
   }
 }
 

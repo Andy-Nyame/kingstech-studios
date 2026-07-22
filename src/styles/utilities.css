@@ -11,7 +11,7 @@
 }
 
 .eyebrow {
-  color: var(--color-primary);
+  color: var(--royal-blue);
   font-family: var(--font-heading);
   font-size: var(--text-xs);
   font-weight: 700;
@@ -23,7 +23,7 @@
 .heading-display,
 .heading-section,
 .heading-card {
-  color: var(--color-near-black);
+  color: var(--text-primary);
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -47,7 +47,7 @@
 
 .body-copy {
   max-width: 42rem;
-  color: var(--color-muted);
+  color: var(--text-muted);
   font-size: var(--text-lg);
   line-height: 1.75;
 }

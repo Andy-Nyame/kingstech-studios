@@ -1,6 +1,6 @@
 .servicesPage {
   overflow: clip;
-  background: var(--color-off-white);
+  background: var(--background);
 }
 
 .hero {
@@ -18,7 +18,7 @@
       color-mix(in srgb, var(--color-gold) 12%, transparent),
       transparent 28%
     ),
-    var(--color-off-white);
+    var(--background);
   text-align: center;
 }
 
@@ -29,7 +29,7 @@
 .hero h1 {
   max-width: 14ch;
   margin: 1rem auto 0;
-  color: var(--color-near-black);
+  color: var(--text-primary);
   font-size: var(--heading-display);
   font-weight: 700;
   letter-spacing: -0.055em;
@@ -38,13 +38,13 @@
 }
 
 .hero h1 span {
-  color: var(--color-primary);
+  color: var(--royal-blue);
 }
 
 .hero p:not(:global(.eyebrow)) {
   max-width: 42rem;
   margin: 1.5rem auto 0;
-  color: var(--color-muted);
+  color: var(--text-muted);
   font-size: var(--text-lg);
   line-height: 1.75;
 }
@@ -60,7 +60,7 @@
 .overview,
 .whyChoose {
   padding-block: var(--section-spacing);
-  background: var(--color-white);
+  background: var(--surface);
 }
 
 .sectionHeader {
@@ -93,9 +93,9 @@
   grid-template-rows: auto 1fr;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius-large);
-  background: var(--color-white);
+  background: var(--card);
   box-shadow: var(--shadow-small);
   transition:
     transform var(--transition-base),
@@ -104,7 +104,7 @@
 }
 
 .serviceCard:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 32%, var(--color-border));
+  border-color: color-mix(in srgb, var(--royal-blue) 32%, var(--border));
   box-shadow: var(--shadow-medium);
   transform: translateY(-0.25rem);
 }
@@ -114,14 +114,14 @@
   min-height: clamp(12rem, 22vw, 16.5rem);
   place-items: center;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border);
   background:
     radial-gradient(
       circle at 20% 20%,
       color-mix(in srgb, var(--color-primary) 9%, transparent),
       transparent 30%
     ),
-    var(--color-off-white);
+    var(--surface-soft);
 }
 
 .serviceImage {
@@ -137,7 +137,7 @@
 }
 
 .serviceContent > p:first-child {
-  color: var(--color-primary);
+  color: var(--royal-blue);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -146,7 +146,7 @@
 
 .serviceContent h3 {
   margin-top: 0.65rem;
-  color: var(--color-near-black);
+  color: var(--text-primary);
   font-size: var(--heading-card);
   letter-spacing: -0.035em;
   line-height: 1.12;
@@ -154,7 +154,7 @@
 
 .serviceContent h3 + p {
   margin-top: 0.9rem;
-  color: var(--color-muted);
+  color: var(--text-muted);
   font-size: var(--text-sm);
   line-height: 1.75;
 }
@@ -173,7 +173,7 @@
   min-width: 0;
   align-items: flex-start;
   gap: 0.7rem;
-  color: var(--color-near-black);
+  color: var(--text-primary);
   font-size: var(--text-sm);
   line-height: 1.55;
 }
@@ -183,14 +183,14 @@
   height: 0.55rem;
   flex: 0 0 auto;
   margin-top: 0.42rem;
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--royal-blue);
   border-radius: 50%;
 }
 
 .process {
   padding-block: var(--section-spacing);
   color: color-mix(in srgb, var(--color-white) 74%, transparent);
-  background: var(--color-dark-surface);
+  background: var(--dark-section-bg);
 }
 
 .processHeader {
@@ -216,7 +216,7 @@
 }
 
 .processList span {
-  color: var(--color-primary);
+  color: var(--royal-blue);
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
   font-weight: 700;
@@ -241,7 +241,7 @@
 .whyGrid p:not(:global(.eyebrow)) {
   max-width: 39rem;
   margin-top: 1.5rem;
-  color: var(--color-muted);
+  color: var(--text-muted);
   font-size: var(--text-lg);
   line-height: 1.75;
 }
@@ -257,9 +257,9 @@
 
 .reasonList li {
   padding: 1.25rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius-medium);
-  background: var(--color-off-white);
+  background: var(--surface-soft);
 }
 
 .reasonList li span {
@@ -269,15 +269,15 @@
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  color: var(--color-primary);
-  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  color: var(--royal-blue);
+  background: color-mix(in srgb, var(--royal-blue) 12%, transparent);
   font-size: 0.7rem;
   font-weight: 700;
 }
 
 .cta {
   padding-block: var(--section-spacing);
-  background: var(--color-off-white);
+  background: var(--background);
 }
 
 .ctaPanel {
@@ -289,8 +289,8 @@
   color: color-mix(in srgb, var(--color-white) 78%, transparent);
   background: linear-gradient(
     135deg,
-    var(--color-near-black),
-    var(--color-primary-dark)
+    var(--cta-gradient-start),
+    var(--cta-gradient-end)
   );
   box-shadow: var(--shadow-large);
   text-align: center;
@@ -304,12 +304,12 @@
   width: 44%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--color-primary) 38%, transparent);
+  background: color-mix(in srgb, var(--royal-blue) 38%, transparent);
   content: "";
 }
 
 .ctaEyebrow {
-  color: var(--color-gold);
+  color: var(--luxury-gold);
   font-family: var(--font-heading);
   font-size: var(--text-xs);
   font-weight: 700;
@@ -332,7 +332,7 @@
 .ctaButton {
   margin-top: 2rem;
   color: var(--color-near-black);
-  background: var(--color-gold);
+  background: var(--luxury-gold);
 }
 
 .ctaButton:hover {
@@ -350,7 +350,7 @@
   }
 
   .serviceMedia {
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid var(--border);
     border-bottom: 0;
   }
 
@@ -377,7 +377,7 @@
   .serviceMedia {
     min-height: 11rem;
     border-right: 0;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border);
   }
 
   .serviceImage {

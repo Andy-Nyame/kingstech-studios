@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import ThemeToggle from "@/components/theme/ThemeToggle";
+import { useTheme } from "@/components/theme/useTheme";
 import { siteConfig } from "@/constants/site";
 import styles from "./Header.module.css";
 
@@ -13,6 +15,7 @@ const mobileNavigationLinks = siteConfig.navigation.some(({ href }) => href === 
 
 export default function Header() {
   const pathname = usePathname();
+  const { isDark, isMounted, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const mobileMenuRef = useRef(null);
@@ -124,7 +127,7 @@ export default function Header() {
           aria-label={`${siteConfig.name} home`}
         >
           <Image
-            src="/logos/favicon2.png"
+            src={isDark ? "/logos/favicon1.png" : "/logos/favicon2.png"}
             alt=""
             width={1267}
             height={202}
@@ -141,6 +144,13 @@ export default function Header() {
         <Link href="/contact" className={`button button-primary ${styles.desktopCta}`}>
           Get Started
         </Link>
+
+        <ThemeToggle
+          className={styles.themeToggle}
+          isDark={isDark}
+          isMounted={isMounted}
+          onToggle={toggleTheme}
+        />
 
         <button
           ref={menuButtonRef}

@@ -10,17 +10,22 @@
 }
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
   text-size-adjust: 100%;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  color: var(--color-near-black);
-  background: var(--color-off-white);
+  color: var(--text-primary);
+  background: var(--background);
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: 1.6;
@@ -102,7 +107,7 @@ table {
 
 ::selection {
   color: var(--color-white);
-  background: var(--color-primary);
+  background: var(--royal-blue);
 }
 
 .site-shell {

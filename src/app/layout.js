@@ -25,10 +25,29 @@ export const metadata = {
   },
 };
 
+const themeInitScript = `
+(() => {
+  try {
+    const storedTheme = localStorage.getItem("kingstech-theme");
+    const theme = storedTheme === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  } catch {
+    document.documentElement.dataset.theme = "light";
+    document.documentElement.style.colorScheme = "light";
+  }
+})();
+`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <div className="site-shell">
           <Header />
           <div className="site-content">{children}</div>
