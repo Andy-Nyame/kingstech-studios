@@ -20,6 +20,9 @@ export const metadata = {
   title: siteConfig.name,
   description:
     "Premium web design, UI/UX, and web development for modern businesses.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
