@@ -52,7 +52,7 @@ export const siteConfig = {
     { label: "Process", href: "/process" },
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
-    { label: "FAQ", href: "/faq" },
+    { label: "FAQ", href: "/faqs" },
     { label: "Contact", href: "/contact" },
     { label: "Privacy Policy", href: "/privacy" },
   ],
