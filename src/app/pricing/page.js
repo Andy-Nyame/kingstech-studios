@@ -28,7 +28,6 @@ const packages = [
     bestFor:
       "Growing businesses that need a stronger and more complete website.",
     cta: "Choose Business",
-    badge: "Recommended",
     features: [
       "4–7 page website",
       "Custom homepage and inner pages",
@@ -126,15 +125,7 @@ export default function PricingPage() {
 
           <div className={styles.packageGrid}>
             {packages.map((pricingPackage) => (
-              <article
-                key={pricingPackage.name}
-                className={`${styles.packageCard} ${
-                  pricingPackage.badge ? styles.recommended : ""
-                }`}
-              >
-                {pricingPackage.badge ? (
-                  <span className={styles.packageBadge}>{pricingPackage.badge}</span>
-                ) : null}
+              <article key={pricingPackage.name} className={styles.packageCard}>
                 <div className={styles.packageHeader}>
                   <p>{pricingPackage.name}</p>
                   <h3>{pricingPackage.price}</h3>
