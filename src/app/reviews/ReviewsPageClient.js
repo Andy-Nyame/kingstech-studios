@@ -67,6 +67,8 @@ export default function ReviewsPageClient() {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const formId = useId();
 
   function updateField(name, value) {
@@ -84,6 +86,9 @@ export default function ReviewsPageClient() {
       delete nextErrors[name];
       return nextErrors;
     });
+
+    setErrorMessage("");
+    setSuccessMessage("");
   }
 
   function validateForm() {
@@ -109,7 +114,7 @@ export default function ReviewsPageClient() {
     return nextErrors;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const validationErrors = validateForm();
@@ -117,13 +122,48 @@ export default function ReviewsPageClient() {
 
     if (Object.keys(validationErrors).length > 0) {
       setSuccessMessage("");
+      setErrorMessage("");
       return;
     }
 
-    setSuccessMessage(
-      "Thank you. Your testimonial has been received for review before publishing.",
-    );
-    setFormValues(initialFormValues);
+    setIsSubmitting(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          full_name: formValues.fullName.trim(),
+          business_name: formValues.businessName.trim(),
+          project_type: formValues.projectType,
+          rating: formValues.rating,
+          message: formValues.message.trim(),
+          permission: formValues.permission,
+        }),
+      });
+
+      if (!response.ok) {
+        setErrorMessage(
+          "Something went wrong while submitting your testimonial. Please try again.",
+        );
+        return;
+      }
+
+      setSuccessMessage(
+        "Thank you. Your testimonial has been received for review before publishing.",
+      );
+      setFormValues(initialFormValues);
+    } catch {
+      setErrorMessage(
+        "Something went wrong while submitting your testimonial. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -333,8 +373,18 @@ export default function ReviewsPageClient() {
               </p>
             ) : null}
 
-            <button type="submit" className={`button ${styles.submitButton}`}>
-              Submit Testimonial
+            {errorMessage ? (
+              <p className={styles.submitError} role="alert">
+                {errorMessage}
+              </p>
+            ) : null}
+
+            <button
+              type="submit"
+              className={`button ${styles.submitButton}`}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Submitting..." : "Submit Testimonial"}
             </button>
           </form>
         </div>

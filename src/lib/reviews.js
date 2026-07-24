@@ -27,6 +27,15 @@ function getSupabaseConfig() {
   };
 }
 
+export function getSupabaseEnvStatus() {
+  const config = getSupabaseConfig();
+
+  return {
+    hasUrl: Boolean(config.url),
+    hasSecretKey: Boolean(config.key),
+  };
+}
+
 function createSupabaseUrl(path, params = {}) {
   const { url } = getSupabaseConfig();
   const requestUrl = new URL(`${url}/rest/v1/${path}`);
@@ -144,6 +153,22 @@ export async function getAdminReviews() {
     error: null,
     reviews: Array.isArray(response.data) ? response.data : [],
   };
+}
+
+export async function createPendingReview(values) {
+  return requestSupabase(REVIEWS_TABLE, {
+    method: "POST",
+    body: {
+      full_name: values.full_name,
+      business_name: values.business_name || null,
+      project_type: values.project_type || null,
+      rating: values.rating,
+      message: values.message,
+      permission: values.permission,
+      status: "pending",
+    },
+    prefer: "return=representation",
+  });
 }
 
 export async function setFeaturedReview(reviewId) {

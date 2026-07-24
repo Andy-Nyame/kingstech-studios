@@ -3,7 +3,7 @@ import { getFeaturedReview, setFeaturedReview } from "@/lib/reviews";
 export const dynamic = "force-dynamic";
 
 function isAuthorized(request) {
-  const adminToken = process.env.REVIEWS_ADMIN_TOKEN;
+  const adminToken = process.env.REVIEW_ADMIN_KEY;
 
   if (!adminToken) {
     return true;

@@ -324,11 +324,26 @@
   line-height: 1.6;
 }
 
+.submitError {
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-error) 32%, var(--border));
+  border-radius: var(--radius-medium);
+  color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error) 8%, transparent);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
 .submitButton {
   justify-self: start;
   margin-top: 0.5rem;
   color: var(--color-white);
   background: var(--royal-blue);
+}
+
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
 }
 
 .submitButton:hover {
