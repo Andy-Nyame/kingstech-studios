@@ -412,6 +412,96 @@
   margin-top: 2rem;
 }
 
+.featuredReview {
+  padding-block: var(--section-spacing);
+  background: var(--surface-soft);
+}
+
+.featuredReviewGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(20rem, 1.15fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.featuredReviewCopy {
+  max-width: 36rem;
+}
+
+.testimonialCard {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(
+      circle at 92% 12%,
+      color-mix(in srgb, var(--luxury-gold) 16%, transparent),
+      transparent 34%
+    ),
+    var(--card);
+  box-shadow: var(--shadow-medium);
+}
+
+.testimonialCard::before {
+  color: color-mix(in srgb, var(--royal-blue) 20%, transparent);
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 700;
+  line-height: 0.75;
+  content: "“";
+}
+
+.reviewStars {
+  width: fit-content;
+  color: var(--luxury-gold);
+  font-size: var(--text-xl);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 0 0.75rem 1.75rem color-mix(in srgb, var(--luxury-gold) 18%, transparent);
+}
+
+.reviewStars span {
+  color: color-mix(in srgb, var(--luxury-gold) 28%, var(--text-muted));
+}
+
+.testimonialCard blockquote {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.35;
+}
+
+.testimonialCard footer {
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+.testimonialCard strong {
+  color: var(--text-primary);
+  font-size: var(--text-base);
+}
+
+.testimonialCard footer span,
+.emptyReview {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+}
+
+.emptyReview {
+  max-width: 34rem;
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
 .process {
   padding-block: var(--section-spacing);
   color: color-mix(in srgb, var(--color-white) 72%, transparent);
@@ -585,6 +675,7 @@
   .heroGrid,
   .studioGrid,
   .projectGrid,
+  .featuredReviewGrid,
   .processHeading {
     grid-template-columns: 1fr;
   }
@@ -595,7 +686,8 @@
 
   .heroCopy,
   .studioCopy,
-  .projectCopy {
+  .projectCopy,
+  .featuredReviewCopy {
     max-width: 44rem;
   }
 

@@ -1,0 +1,203 @@
+.adminPage {
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--background);
+}
+
+.hero {
+  padding-block: clamp(4.5rem, 9vw, 7rem);
+  background:
+    radial-gradient(
+      circle at 18% 24%,
+      color-mix(in srgb, var(--royal-blue) 10%, transparent),
+      transparent 30%
+    ),
+    var(--background);
+}
+
+.hero h1 {
+  max-width: 12ch;
+  margin-top: 1rem;
+  color: var(--text-primary);
+  font-size: var(--heading-display);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.hero p:not(:global(.eyebrow)) {
+  max-width: 42rem;
+  margin-top: 1.25rem;
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.75;
+}
+
+.reviewSection {
+  padding-block: var(--section-spacing);
+  background: var(--surface);
+}
+
+.notice,
+.emptyState,
+.statusMessage,
+.reviewCard {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--card);
+  box-shadow: var(--shadow-small);
+}
+
+.notice,
+.emptyState,
+.statusMessage {
+  padding: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.statusMessage {
+  color: var(--royal-blue);
+  font-weight: 700;
+}
+
+.reviewStack {
+  display: grid;
+  gap: 1rem;
+}
+
+.reviewCard {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.reviewMeta {
+  color: var(--royal-blue);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reviewCard h2 {
+  margin-top: 0.45rem;
+  color: var(--text-primary);
+  font-size: var(--heading-card);
+  letter-spacing: -0.035em;
+}
+
+.reviewCard h2 + p,
+.notEligible {
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: flex-start;
+  gap: 0.5rem;
+}
+
+.statusBadge,
+.featuredBadge {
+  width: fit-content;
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.65rem;
+  font-size: var(--text-xs);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statusBadge {
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--surface-soft);
+}
+
+.statusBadge[data-status="approved"] {
+  border-color: color-mix(in srgb, var(--color-success) 32%, var(--border));
+  color: var(--color-success);
+}
+
+.statusBadge[data-status="rejected"] {
+  border-color: color-mix(in srgb, var(--color-error) 32%, var(--border));
+  color: var(--color-error);
+}
+
+.featuredBadge {
+  border: 1px solid color-mix(in srgb, var(--luxury-gold) 50%, var(--border));
+  color: var(--color-near-black);
+  background: var(--luxury-gold);
+}
+
+.stars {
+  width: fit-content;
+  color: var(--luxury-gold);
+  font-size: var(--text-xl);
+  letter-spacing: 0.08em;
+}
+
+.stars span {
+  color: color-mix(in srgb, var(--luxury-gold) 26%, var(--text-muted));
+}
+
+.reviewCard blockquote {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--text-lg);
+  line-height: 1.75;
+}
+
+.featureButton {
+  justify-self: start;
+  min-height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--royal-blue) 32%, var(--border));
+  border-radius: var(--radius-pill);
+  padding: 0 1rem;
+  color: var(--color-white);
+  background: var(--royal-blue);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.featureButton:hover:not(:disabled),
+.featureButton:focus-visible {
+  background: var(--royal-blue-dark);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-0.125rem);
+}
+
+.featureButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+@media (max-width: 40rem) {
+  .cardHeader {
+    display: grid;
+  }
+
+  .badges {
+    justify-content: flex-start;
+  }
+
+  .featureButton {
+    width: 100%;
+  }
+}

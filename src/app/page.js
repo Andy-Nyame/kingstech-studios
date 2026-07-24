@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getFeaturedReview } from "@/lib/reviews";
 import styles from "./home.module.css";
+
+export const dynamic = "force-dynamic";
 
 const capabilities = [
   "Responsive Design",
@@ -101,7 +104,18 @@ const processSteps = [
   },
 ];
 
-export default function Home() {
+function ReviewStars({ rating }) {
+  return (
+    <span className={styles.reviewStars} aria-label={`${rating} out of 5 stars`}>
+      {"★".repeat(rating)}
+      <span aria-hidden="true">{"☆".repeat(Math.max(0, 5 - rating))}</span>
+    </span>
+  );
+}
+
+export default async function Home() {
+  const featuredReview = await getFeaturedReview();
+
   return (
     <main className={styles.home}>
       <section className={styles.hero} aria-labelledby="home-hero-title">
@@ -295,6 +309,49 @@ export default function Home() {
               <span aria-hidden="true">→</span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.featuredReview} aria-labelledby="featured-review-title">
+        <div className={`container ${styles.featuredReviewGrid}`}>
+          <div className={styles.featuredReviewCopy}>
+            <p className="eyebrow">Client Feedback</p>
+            <h2 id="featured-review-title" className={styles.sectionTitle}>
+              What clients say about KINGSTECH STUDIOS
+            </h2>
+            <p className={styles.sectionBody}>
+              Honest testimonials are shown only after completed projects are
+              reviewed and approved.
+            </p>
+            <Link href="/reviews" className={styles.textLink}>
+              Read More Reviews
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          {featuredReview ? (
+            <article className={styles.testimonialCard}>
+              <ReviewStars rating={featuredReview.rating || 0} />
+              <blockquote>{featuredReview.message}</blockquote>
+              <footer>
+                <strong>{featuredReview.full_name}</strong>
+                {featuredReview.business_name || featuredReview.project_type ? (
+                  <span>
+                    {[featuredReview.business_name, featuredReview.project_type]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </span>
+                ) : null}
+              </footer>
+            </article>
+          ) : (
+            <div className={styles.testimonialCard}>
+              <p className={styles.emptyReview}>
+                Client testimonials will appear here after completed projects
+                are reviewed and approved.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
