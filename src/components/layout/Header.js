@@ -133,7 +133,6 @@ export default function Header() {
             height={202}
             sizes="(max-width: 48rem) 276px, (max-width: 64rem) 326px, 376px"
             className={styles.logo}
-            priority
           />
         </Link>
 
