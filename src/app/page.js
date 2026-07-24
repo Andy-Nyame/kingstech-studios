@@ -135,7 +135,6 @@ export default function Home() {
               height={941}
               sizes="(max-width: 52rem) calc(100vw - 40px), (max-width: 75rem) 45vw, 540px"
               className={styles.heroImage}
-              priority
             />
             <span className={styles.mediaBadge} aria-hidden="true">
               <span>Refined UI/UX</span>
