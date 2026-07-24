@@ -151,7 +151,6 @@ export default function PortfolioPage() {
                     height={1024}
                     sizes="(max-width: 40rem) 68vw, (max-width: 64rem) calc(100vw - 80px), (max-width: 75rem) 58vw, 720px"
                     className={styles.desktopImage}
-                    priority
                   />
                 </div>
                 <div className={styles.mobileFrame}>
