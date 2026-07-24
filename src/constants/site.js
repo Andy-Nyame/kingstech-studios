@@ -55,7 +55,7 @@ export const siteConfig = {
     { label: "Process", href: "/process" },
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
-    { label: "FAQ", href: "/faqs" },
+    { label: "FAQs", href: "/faqs" },
     { label: "Reviews", href: "/reviews" },
     { label: "Contact", href: "/contact" },
     { label: "Privacy Policy", href: "/privacy" },

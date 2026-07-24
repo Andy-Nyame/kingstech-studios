@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/constants/site";
 import styles from "./about.module.css";
 
 export const metadata = {
@@ -61,28 +59,6 @@ export default function AboutPage() {
               <Link href="/services" className="button button-secondary">
                 View Our Services
               </Link>
-            </div>
-          </div>
-
-          <div className={styles.heroVisual} aria-hidden="true">
-            <div className={styles.visualPanel}>
-              <span className={styles.visualMark}>
-                <Image
-                  src="/favicon.ico"
-                  alt="KINGSTECH STUDIOS logo"
-                  width={264}
-                  height={218}
-                  sizes="(max-width: 40rem) 64px, 96px"
-                  className={styles.visualLogo}
-                />
-              </span>
-              <span>{siteConfig.name}</span>
-              <strong>{siteConfig.tagline}</strong>
-            </div>
-            <div className={styles.orbitCard}>
-              <span>Design</span>
-              <span>Development</span>
-              <span>Digital Systems</span>
             </div>
           </div>
         </div>
@@ -196,15 +172,6 @@ export default function AboutPage() {
 
       <section className={styles.approach} aria-labelledby="approach-title">
         <div className={`container ${styles.approachGrid}`}>
-          <div className={styles.approachVisual} aria-hidden="true">
-            <div className={styles.browserCard}>
-              <span />
-              <span />
-              <span />
-              <div />
-            </div>
-          </div>
-
           <div className={styles.approachCopy}>
             <p className="eyebrow">How We Think</p>
             <h2 id="approach-title">Our approach is simple</h2>

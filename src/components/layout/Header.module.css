@@ -196,6 +196,12 @@
   }
 }
 
+@media (min-width: 56.25rem) and (max-width: 75rem) {
+  .desktopCta {
+    display: none;
+  }
+}
+
 @media (max-width: 56.249rem) {
   .logoLink {
     max-width: 38vw;
