@@ -17,14 +17,8 @@ const ADMIN_REVIEW_FIELDS = [
 ];
 
 function getSupabaseConfig() {
-  const url =
-    process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    process.env.SUPABASE_SERVICE_KEY ||
-    process.env.SUPABASE_ANON_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    "";
+  const url = process.env.SUPABASE_URL || "";
+  const key = process.env.SUPABASE_SECRET_KEY || "";
 
   return {
     configured: Boolean(url && key),
@@ -66,7 +60,7 @@ async function requestSupabase(path, options = {}) {
     return {
       data: null,
       error:
-        "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.",
+        "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SECRET_KEY.",
       ok: false,
       status: 503,
     };
